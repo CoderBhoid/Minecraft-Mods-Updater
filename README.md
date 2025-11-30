@@ -149,5 +149,5 @@ This project is licensed under the **MIT License**.
 
 <div align="center">
 
-### Maintained with 💚 by <strong><a href="https://gi
+### Maintained with 💚 by Bhoid
 
