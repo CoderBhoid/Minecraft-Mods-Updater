@@ -1,0 +1,5 @@
+{
+  "name": "MC Mod Updater",
+  "description": "A minimalist, high-performance tool to check for Minecraft mod updates using the Modrinth API. Features a stark black-and-white aesthetic.",
+  "requestFramePermissions": []
+}

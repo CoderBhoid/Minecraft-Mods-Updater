@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://minecraft-mod-updater.vercel.app/sitemap.xml
