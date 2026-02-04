@@ -1,5 +1,6 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Upload, Search, Download, Settings, Zap, RefreshCw } from 'lucide-react';
 import JSZip from 'jszip';
 import saveAs from 'file-saver';
 import './index.css';
