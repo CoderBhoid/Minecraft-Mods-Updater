@@ -364,7 +364,7 @@ const App: React.FC = () => {
               <div className="w-24 h-24 bg-[#1bd96a] rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl shadow-[#1bd96a]/20">
                 <Upload className="w-10 h-10 text-black animate-bounce" />
               </div>
-              <h2 className="text-4xl font-bold text-white tracking-tight mb-2">Drop JAR files here</h2>
+              <h2 className="text-4xl text-white tracking-tight mb-2">Drop JAR files here</h2>
               <p className="text-zinc-400 text-lg">Add mods to your list instantly</p>
             </div>
           </motion.div>
@@ -396,7 +396,7 @@ const App: React.FC = () => {
             {/* Configuration */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider flex items-center gap-2">
+                <h2 className="text-xs text-zinc-500 uppercase tracking-wider flex items-center gap-2">
                   <Settings className="w-3 h-3" /> Configuration
                 </h2>
                 {fetchingVersions && (
@@ -475,7 +475,7 @@ const App: React.FC = () => {
                 <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform group-hover:bg-[#1bd96a]">
                   <Upload className="w-4 h-4 text-zinc-400 group-hover:text-black transition-colors" />
                 </div>
-                <p className="text-xs font-semibold text-zinc-300 group-hover:text-[#1bd96a] transition-colors">Add Mods</p>
+                <p className="text-xs text-zinc-300 group-hover:text-[#1bd96a] transition-colors">Add Mods</p>
                 <p className="text-[10px] text-zinc-600 group-hover:text-zinc-500">Drop .jar files here</p>
               </div>
 
@@ -493,7 +493,7 @@ const App: React.FC = () => {
 
               {stats.found > 0 && (
                 <Button
-                  className="w-full bg-green-500 border-green-500 text-black hover:bg-green-400 hover:border-green-400 font-bold"
+                  className="w-full bg-green-500 border-green-500 text-black hover:bg-green-400 hover:border-green-400"
                   onClick={downloadAll}
                   isLoading={isDownloadingAll}
                   icon={<Download className="w-4 h-4" />}
@@ -524,7 +524,7 @@ const App: React.FC = () => {
           ) : (
             <div className="p-6 md:p-10 max-w-7xl mx-auto w-full flex-1">
               <div className="flex items-center justify-between mb-8 sticky top-0 bg-black/80 backdrop-blur z-20 py-4 -my-4">
-                <h2 className="text-xl font-bold flex items-center gap-3">
+                <h2 className="text-xl flex items-center gap-3">
                   Installed Mods <span className="bg-zinc-800 text-zinc-300 text-xs px-2 py-1 rounded-full">{stats.total}</span>
                 </h2>
                 <div className="flex gap-4 text-xs font-mono">

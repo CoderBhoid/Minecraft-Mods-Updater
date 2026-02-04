@@ -61,10 +61,10 @@ export const ModCard: React.FC<ModCardProps> = ({ mod, index, onDownload, isDown
 
         <div className="flex-1 min-w-0">
           <div className="flex justify-between items-start">
-            <h4 className="font-semibold text-zinc-100 truncate pr-2" title={mod.name}>
+            <h4 className="text-zinc-100 truncate pr-2" title={mod.name}>
               {mod.name}
             </h4>
-            
+
             {mod.status === 'found' && (
               <button
                 onClick={() => onDownload(mod)}
@@ -80,14 +80,14 @@ export const ModCard: React.FC<ModCardProps> = ({ mod, index, onDownload, isDown
               </button>
             )}
           </div>
-          
+
           <p className="text-xs text-zinc-500 font-mono truncate mt-0.5" title={mod.originalFile?.name || 'Dependency'}>
             {mod.originalFile?.name || 'Auto-resolved Dependency'}
           </p>
-          
+
           <div className="flex items-center gap-2 mt-3">
             <span className={`
-              inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider
+              inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider
               ${mod.status === 'found' ? 'bg-green-950 text-green-400 border border-green-900' : ''}
               ${mod.status === 'missing' ? 'bg-red-950 text-red-400 border border-red-900' : ''}
               ${mod.status === 'checking' ? 'bg-zinc-800 text-zinc-400 border border-zinc-700' : ''}
@@ -98,7 +98,7 @@ export const ModCard: React.FC<ModCardProps> = ({ mod, index, onDownload, isDown
             </span>
             {mod.fileName && mod.status === 'found' && (
               <span className="text-[10px] text-zinc-600 font-mono truncate max-w-[120px]">
-                 → {mod.fileName}
+                → {mod.fileName}
               </span>
             )}
           </div>
@@ -110,7 +110,7 @@ export const ModCard: React.FC<ModCardProps> = ({ mod, index, onDownload, isDown
         <div className="mt-4 pt-3 border-t border-zinc-800 relative z-10">
           <div className="flex items-center gap-2 text-yellow-500 mb-2">
             <AlertCircle className="w-3 h-3" />
-            <span className="text-xs font-semibold uppercase tracking-wider">Missing Dependencies</span>
+            <span className="text-xs uppercase tracking-wider">Missing Dependencies</span>
           </div>
           <ul className="space-y-2">
             {mod.missingDependencies.map((dep) => {
@@ -119,7 +119,7 @@ export const ModCard: React.FC<ModCardProps> = ({ mod, index, onDownload, isDown
                 <li key={dep.id} className="text-xs text-zinc-400 flex items-center justify-between gap-2 group/item">
                   <div className="flex items-center gap-1.5 min-w-0">
                     <span className="w-1 h-1 bg-yellow-500 rounded-full shrink-0"></span>
-                    <a 
+                    <a
                       href={`https://modrinth.com/mod/${dep.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -129,7 +129,7 @@ export const ModCard: React.FC<ModCardProps> = ({ mod, index, onDownload, isDown
                       <ExternalLink className="w-2.5 h-2.5 opacity-50 group-hover/link:opacity-100" />
                     </a>
                   </div>
-                  
+
                   {onAddDependency && !isAdded && (
                     <button
                       onClick={() => onAddDependency(dep.id, dep.name)}
