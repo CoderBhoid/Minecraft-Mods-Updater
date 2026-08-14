@@ -1,0 +1,58 @@
+# Minecraft Mod Updater — Comprehensive LLM Reference Manual
+URL: https://mcmods.sednium.com/
+Repository: https://github.com/CoderBhoid/Minecraft-Mods-Updater
+Publisher: Sednium
+
+## 1. Executive Summary
+MC Mod Updater (Minecraft Mods Updater) is an open-source browser application that simplifies the process of managing, checking, updating, and dependency-resolving Minecraft modifications. It bridges the gap between manual `.jar` downloading and full third-party launcher lock-in by operating directly in any modern web browser without requiring executable installations.
+
+## 2. Core Capabilities
+
+### Client-Side Cryptographic Hashing
+- When a user uploads `.jar` files, the browser calculates the SHA-1 checksum using the standard Web Cryptography API (`crypto.subtle.digest('SHA-1', arrayBuffer)`).
+- The hash is sent to the Modrinth API v2 (`/version_file/{sha1}`) to look up the exact project, current version, author, and loader compatibility without sending the file contents.
+
+### Mod Version Matching & Search Fallback
+- If a direct hash match is found, the application fetches all published versions matching the user's selected Game Version and Mod Loader.
+- If a hash is unrecognized (e.g., custom compiled build or renamed JAR), the app parses clean semantic tokens from the filename and performs a fuzzy search against the Modrinth project catalog, allowing the user to confirm or override the matched project.
+
+### Dependency Graph & Two-Phase Loading
+1. **Phase 1 (Mod Registry Scan)**: All user mods are hashed, identified, and aggregated into memory.
+2. **Phase 2 (Dependency Resolution)**: The app inspects all project dependencies (`modrinth_version.dependencies`) and categorizes each as:
+   - `required`: Required for the mod to run.
+   - `optional`: Enhances the mod.
+   - `incompatible`: Conflicts with the mod.
+   - The graph cross-references required dependencies against all loaded mods. If missing, a 1-click "Add to Modpack" action is provided to fetch the appropriate library file.
+
+### Modpack Profile System & Sharing Specification
+- Profiles store:
+  - `name`: String
+  - `mcVersion`: Target Minecraft version (e.g. `26.2`, `1.21.4`, `1.20.1`)
+  - `loader`: `fabric` | `neoforge` | `forge` | `quilt`
+  - `versionType`: `release` | `snapshot`
+  - `mods`: Array of mod entries with name, projectId, fileName, isPinned, customLoader, and customVersion.
+- Sharing URLs encode the profile state into a base64 JSON payload (`https://mcmods.sednium.com/?profile=<encoded>`).
+- Export manifests follow a standard JSON schema importable across sessions.
+
+### File System Access API Integration
+- For supported browsers (Chrome, Edge, Opera, Brave), the app provides live directory synchronization with `showDirectoryPicker()`.
+- Users can grant write permission to their `.minecraft/mods` directory to write updated JARs and clean up replaced JARs in a single step.
+
+## 3. Frequently Asked Questions (FAQ)
+
+### Q: Does MC Mod Updater upload my mod files?
+A: No. All file scanning, checksum hashing, and ZIP extraction happen entirely client-side inside the user's web browser. Only SHA-1 hashes and search queries are sent to public mod repository APIs.
+
+### Q: Which mod loaders are supported?
+A: Fabric, NeoForge, Forge, and Quilt.
+
+### Q: Can I use MC Mod Updater on mobile or tablets?
+A: Yes. The UI is fully responsive. On mobile devices, users can inspect mod versions, save profiles, and download individual files or export JSON manifests.
+
+### Q: How do I share my modpack with friends?
+A: In the Modpack Profile Manager, click the Share icon next to your profile to copy a direct import link (`?profile=...`). When your friends open the link, the app will offer to import and load your exact modpack.
+
+## 4. API Endpoints Used
+- Modrinth API v2: `https://api.modrinth.com/v2/`
+- Modrinth CDN: `https://cdn.modrinth.com/`
+- CurseForge Core API

@@ -3,31 +3,121 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231bd96a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+  <link rel="alternate icon" href="/icon.svg" />
+  <link rel="apple-touch-icon" href="/icon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minecraft Mods Updater</title>
+
+  <!-- Primary Meta Tags -->
+  <title>Minecraft Mod Updater — Batch Update & Dependency Resolver | Sednium</title>
+  <meta name="title" content="Minecraft Mod Updater — Batch Update & Dependency Resolver | Sednium" />
   <meta name="description"
-    content="The easiest way to update Minecraft mods. Automatically detect outdated mods, resolve dependencies, and download updates from Modrinth. Supports Fabric, Forge, & NeoForge." />
+    content="Batch update Minecraft mods in seconds. Auto-detect versions, resolve missing dependencies, and download JARs for Fabric, Forge, & NeoForge. Free & instant ✓" />
   <meta name="keywords"
-    content="minecraft, mod updater, modrinth, auto update, fabric, forge, neoforge, quilt, dependency checker, mc mods" />
+    content="minecraft mod updater, update minecraft mods, modrinth updater, fabric mod updater, forge mod updater, neoforge mod updater, minecraft mod dependencies, batch mod updater, minecraft mods" />
+  <meta name="author" content="Sednium" />
+  <meta name="publisher" content="Sednium" />
+  <meta name="application-name" content="MC Mod Updater" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://mcmods.sednium.com/" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Mobile & PWA Theme -->
+  <meta name="theme-color" content="#1bd96a" />
+  <meta name="msapplication-TileColor" content="#09090b" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MC Mod Updater" />
+
+  <!-- Performance & Preconnect Hints -->
+  <link rel="preconnect" href="https://api.modrinth.com" crossorigin />
+  <link rel="dns-prefetch" href="https://api.modrinth.com" />
+  <link rel="preconnect" href="https://cdn.modrinth.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdn.modrinth.com" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Minecraft Mods Updater" />
-  <meta property="og:description"
-    content="The easiest way to update Minecraft mods. Automatically detect outdated mods, resolve dependencies, and download updates from Modrinth." />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Minecraft Mods Updater" />
-  <meta name="twitter:description"
-    content="The easiest way to update Minecraft mods. Automatically detect outdated mods, resolve dependencies, and download updates from Modrinth." />
-
   <meta property="og:url" content="https://mcmods.sednium.com/" />
-  <meta property="twitter:url" content="https://mcmods.sednium.com/" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://mcmods.sednium.com/" />
+  <meta property="og:site_name" content="MC Mod Updater by Sednium" />
+  <meta property="og:title" content="Minecraft Mod Updater — Batch Update & Dependency Resolver" />
+  <meta property="og:description"
+    content="Batch update Minecraft mods in seconds. Auto-detect versions, resolve missing dependencies, and download JARs for Fabric, Forge, & NeoForge." />
+  <meta property="og:image" content="https://mcmods.sednium.com/icon.svg" />
+  <meta property="og:image:alt" content="Minecraft Mods Updater Logo" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://mcmods.sednium.com/" />
+  <meta name="twitter:title" content="Minecraft Mod Updater — Batch Update & Dependency Resolver" />
+  <meta name="twitter:description"
+    content="Batch update Minecraft mods in seconds. Auto-detect versions, resolve missing dependencies, and download JARs for Fabric, Forge, & NeoForge." />
+  <meta name="twitter:image" content="https://mcmods.sednium.com/icon.svg" />
+  <meta name="twitter:creator" content="@Sednium" />
+
+  <!-- JSON-LD Structured Data for Search Engines & LLMs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://mcmods.sednium.com/#webapp",
+        "name": "Minecraft Mods Updater",
+        "url": "https://mcmods.sednium.com/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Web Browser, Windows, macOS, Linux",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Ultra-fast client-side tool to scan, update, and resolve dependencies for Minecraft mods across Fabric, NeoForge, Forge, and Quilt.",
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://sednium.com/#organization",
+          "name": "Sednium",
+          "url": "https://sednium.com"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://mcmods.sednium.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I update Minecraft mods with this tool?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Simply drag and drop your .jar mod files or your entire .minecraft/mods folder onto the webpage. The updater will automatically calculate SHA-1 checksums, detect outdated mods via the Modrinth API, find missing dependencies, and allow you to download all updates with one click."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool upload my personal mod files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All file hashing and scanning is performed 100% client-side inside your browser. Only cryptographic SHA-1 hashes and search queries are sent to public mod APIs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which Minecraft mod loaders are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Minecraft Mods Updater fully supports Fabric, NeoForge, Forge, and Quilt across all Minecraft release and snapshot versions."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -45,9 +135,7 @@
     body {
       font-family: 'Monocraft', sans-serif !important;
       background-color: #09090b;
-      /* Zinc 950 */
       color: #fafafa;
-      /* Zinc 50 */
     }
 
     /* Custom Scrollbar */
@@ -74,9 +162,18 @@
 <body>
   <div id="root"></div>
   <noscript>
-    <h1>Minecraft Mods Updater</h1>
-    <p>The easiest way to update Minecraft mods. Automatically detect outdated mods, resolve dependencies, and download
-      updates from Modrinth. Supports Fabric, Forge, & NeoForge.</p>
+    <main style="padding: 2rem; max-width: 800px; margin: 0 auto; color: #fff; background: #09090b;">
+      <h1>Minecraft Mods Updater — Batch Update &amp; Dependency Resolver</h1>
+      <p>The easiest, fastest way to update Minecraft mods. Automatically detect outdated mods, resolve dependencies, and download updates from Modrinth. Supports Fabric, Forge, NeoForge, &amp; Quilt.</p>
+      <h2>Features</h2>
+      <ul>
+        <li>100% Client-side privacy &amp; instant SHA-1 hashing</li>
+        <li>Two-phase dependency graph and missing library detector</li>
+        <li>Modpack profiles, JSON manifest export, and 1-click sharing links</li>
+        <li>Direct folder synchronization with .minecraft/mods</li>
+      </ul>
+      <p>Please enable JavaScript to use the interactive application.</p>
+    </main>
   </noscript>
   <script type="module" src="/dist/bundle.js"></script>
 </body>

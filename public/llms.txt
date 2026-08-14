@@ -1,0 +1,54 @@
+# Minecraft Mod Updater (MC Mod Updater)
+> The ultra-fast, client-side web application for batch updating Minecraft mods, resolving mod dependencies, and managing modpack profiles across Fabric, NeoForge, Forge, and Quilt.
+
+## Overview
+Minecraft Mod Updater (hosted at https://mcmods.sednium.com/) is a privacy-first web utility designed for Minecraft players, server owners, and modpack creators. It analyzes local `.jar` mod files using cryptographic SHA-1 hashes and Modrinth/CurseForge APIs to find updates, select specific releases, resolve dependency chains, and export or synchronize updated mods directly to your `.minecraft/mods` directory.
+
+- **Website**: https://mcmods.sednium.com/
+- **Source Code**: https://github.com/CoderBhoid/Minecraft-Mods-Updater
+- **Developer / Publisher**: Sednium (https://sednium.com)
+- **Supported Loaders**: Fabric, NeoForge, Forge, Quilt
+- **Supported Game Versions**: All Minecraft release versions (e.g. 1.20.x, 1.21.x, 26.x) and snapshot builds
+- **License**: MIT (Open Source)
+- **Security & Privacy**: 100% Client-Side. Mod files are hashed locally in the browser; files are never uploaded to any remote server.
+
+## Key Features
+
+### 1. Batch Mod Analysis & Updating
+- **Drag & Drop**: Drop individual `.jar` mod files, a `.zip` modpack archive, or an entire `mods/` directory.
+- **Cryptographic Identification**: Calculates SHA-1 hashes locally in browser Web Workers and queries the Modrinth API.
+- **Smart Changelogs & Release Badges**: View release notes, file size, version numbers, and stability indicators (Release, Beta, Alpha).
+- **Per-Mod Version Picker**: Switch between multiple releases of a mod tailored to exact loader and game version requirements.
+
+### 2. Intelligent Two-Phase Dependency Resolution
+- **Full Modpack Dependency Graph**: Scans required, optional, and incompatible dependencies.
+- **False-Positive Elimination**: Evaluates the whole mod list so already installed dependencies are recognized.
+- **1-Click Missing Dependency Resolver**: Instantly adds required companion libraries (such as Fabric API, Cloth Config, YetAnotherConfigLib, Architecture API) to the download queue.
+
+### 3. Modpack Profiles & Sharing
+- **Profile Manager**: Create, save, rename, edit, clone, and switch between separate mod configurations (e.g., "1.21.4 Performance Pack", "1.20.1 Forge Survival").
+- **1-Click Share URL**: Encodes modpack profiles into sharable web links (e.g., `https://mcmods.sednium.com/?profile=...`) that prompt visitors to auto-import and load the pack.
+- **JSON Manifest Export**: Export and import standard JSON modpack manifests.
+- **Formatted Mod List Copy**: 1-click clipboard export as Markdown Table, Discord format, or Plain Text.
+
+### 4. Local Folder Synchronization (File System Access API)
+- Direct connection to your local `.minecraft/mods` directory in Chromium-based browsers.
+- Automatically writes new downloaded `.jar` files and archives or cleans obsolete mod versions with user confirmation.
+
+### 5. Advanced Overrides & Filtering
+- Filter mods by update status (Update Available, Up to Date, Missing, Ignored, Pinned).
+- Search and sort by name, status, or date.
+- Custom loader and game version overrides on a per-mod basis.
+- Pin mods to prevent accidental updates.
+
+## Technical Architecture & APIs
+- **Frontend Framework**: React 19 + TypeScript + Tailwind CSS
+- **API Integration**: Modrinth REST API v2 (`https://api.modrinth.com/v2/`), CurseForge Core API
+- **Deployment**: Static CDN edge deployment on Sednium infrastructure with zero tracking.
+
+## Usage Guide
+1. Open https://mcmods.sednium.com/
+2. Select your target Minecraft version and Mod Loader (Fabric, NeoForge, Forge, or Quilt).
+3. Drag and drop your `.jar` mods or click to browse files.
+4. Review available updates, check dependencies, and adjust versions if desired.
+5. Click **Download All Updates** or sync directly to your `.minecraft/mods` folder.

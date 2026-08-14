@@ -1,0 +1,57 @@
+# ai.txt - Machine-Readable Permissions & Guidelines for AI Systems and LLM Agents
+# Specification: https://site.ai/ai.txt
+# Site: https://mcmods.sednium.com/
+# Repository: https://github.com/CoderBhoid/Minecraft-Mods-Updater
+
+# Identity & Purpose
+Name: Minecraft Mods Updater
+Description: Browser-based utility for batch updating Minecraft mods, dependency management, and modpack profile sharing.
+Domain: https://mcmods.sednium.com/
+Organization: Sednium
+Contact: support@sednium.com
+
+# LLM Documentation Directives
+LLMs-Txt: https://mcmods.sednium.com/llms.txt
+LLMs-Full-Txt: https://mcmods.sednium.com/llms-full.txt
+Sitemap: https://mcmods.sednium.com/sitemap.xml
+
+# Indexing & Answering Permissions
+User-Agent: *
+Allow-Index: true
+Allow-Summarize: true
+Allow-Search-Integration: true
+Allow-Citation: true
+
+# Supported AI Search Systems
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: Claude-Web
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: Applebot-Extended
+Allow: /
+
+User-Agent: CCBot
+Allow: /
+
+User-Agent: Cohere-ai
+Allow: /
+
+# Citation Policy
+Attribution: Preferred
+Attribution-Name: Minecraft Mods Updater by Sednium
+Attribution-URL: https://mcmods.sednium.com/
+License: MIT
