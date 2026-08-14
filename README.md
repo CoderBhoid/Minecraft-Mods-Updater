@@ -1,98 +1,216 @@
-# MC Mod Updater
+<div align="center">
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)
-[![Live Demo](https://img.shields.io/badge/demo-live-green.svg)](https://mcmods.sednium.com)
+# 🎮 Minecraft Mods Updater (MC Mod Updater)
 
-**MC Mod Updater** is the ultimate tool for Minecraft players who want to keep their modpack up-to-date without the hassle. It simplifies the process of managing mods by automatically detecting outdated files, resolving missing dependencies, and fetching the latest versions directly from Modrinth.
+**The ultra-fast, privacy-first web application for batch updating Minecraft mods, resolving dependency graphs, and sharing modpack profiles across Fabric, NeoForge, Forge, and Quilt.**
+
+[![Live Web App](https://img.shields.io/badge/Live%20App-mcmods.sednium.com-1bd96a?style=for-the-badge&logo=minecraft&logoColor=white)](https://mcmods.sednium.com)
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://mods-updater-minecraft.vercel.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/CoderBhoid/Minecraft-Mods-Updater?style=for-the-badge&color=gold)](https://github.com/CoderBhoid/Minecraft-Mods-Updater/stargazers)
+
+---
+
+[🚀 Launch Web App](https://mcmods.sednium.com) • [✨ Features](#-key-features) • [⚡ How It Works](#-how-it-works) • [📦 Architecture](#-architecture--data-flow) • [🛠️ Local Setup](#-local-development--setup) • [🤝 Contributing](#-contributing)
+
+---
+
+</div>
+
+## 🌟 Why MC Mod Updater?
+
+Keeping Minecraft mods updated across major game versions (e.g. `1.20.1`, `1.21.4`, `26.2`) is usually a tedious loop of hunting down JARs, cross-referencing compatibility tables, and debugging missing dependency crashes.
+
+**MC Mod Updater runs 100% in your browser** to automate the entire process:
+- ⚡ **Zero Installation**: No `.exe` or desktop app required. Open in any modern web browser.
+- 🔒 **100% Private & Client-Side**: Your files never leave your computer. Checksums are calculated locally using the Web Cryptography API.
+- 🧩 **Smart Two-Phase Dependency Engine**: Automatically detects required companion libraries (Fabric API, Cloth Config, Architecture API) and eliminates false-positive alerts.
+- 🔗 **1-Click Modpack Sharing**: Generate instant web links to share your exact mod setup with friends or server members.
+- 💾 **Direct Folder Sync**: Connect directly to your `.minecraft/mods` folder with the File System Access API.
+
+---
 
 ## ✨ Key Features
 
-### 🔍 Intelligent Detection
--   **Hash-Based Identification**: Identifies mods by their SHA-1 hash to ensure 100% accuracy, even if filenames are changed.
--   **Fuzzy Search Fallback**: If a hash isn't found, it uses smart name matching to find the correct project on Modrinth.
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        MC MOD UPDATER CORE SUITE                       │
+├────────────────────┬────────────────────┬──────────────────────────────┤
+│ 🔍 Smart Hashing   │ 🧩 Dependency Graph│ 👥 Profile Sharing           │
+│ SHA-1 + Fuzzy API  │ Two-Phase Resolver │ Direct URLs + JSON Manifests │
+├────────────────────┼────────────────────┼──────────────────────────────┤
+│ 🎛️ Version Selector│ 📁 Local Folder Sync│ 📋 Formatted Copy            │
+│ Alpha/Beta/Release │ Chrome File System │ Discord / Markdown / Text    │
+└────────────────────┴────────────────────┴──────────────────────────────┘
+```
 
-### 🧩 Dependency Resolution
--   **Auto-Resolve**: Automatically detects required dependencies (e.g., Fabric API, Cloth Config) for your mods.
--   **Missing Dependency Alerts**: Clearly highlights which dependencies are missing so you can add them with one click.
+### 1. 🔍 Intelligent Mod Identification
+- **Cryptographic SHA-1 Verification**: Generates local hashes in browser workers to match exact mod versions against Modrinth & CurseForge.
+- **Smart Semantic Fallback**: Automatically cleans filenames (e.g. `fabric-sodium-mc1.20.1-0.5.8.jar` → `sodium`) to locate projects even if the JAR was custom-built or renamed.
 
-### 🌍 Universal Support
--   **Multi-Loader Support**: Fully supports **Fabric**, **Forge**, **NeoForge**, and **Quilt**.
--   **Version Targeting**: Supports both **Release** versions (e.g., 1.20.4) and **Snapshots** (e.g., 24w14a).
--   **Cross-Version Checks**: Easily check if your mods have updates for a newer version of Minecraft.
+### 2. 🧩 Two-Phase Dependency Resolution
+- **Phase 1**: Sequential hashing and identification of all loaded mods.
+- **Phase 2**: Evaluates project dependencies against your **entire modpack**, highlighting only truly missing companion libraries.
+- **1-Click Resolver**: Adds missing dependencies directly to your batch download queue.
 
-### ⚡ User Experience
--   **Drag & Drop Interface**: simply drag your entire `mods` folder into the window.
--   **Bulk Download**: Download all updated mods and dependencies as a single optimized `.zip` file.
--   **Modern UI**: A focused, dark-mode interface designed for ease of use.
+### 3. 👥 Modpack Profiles & Direct Web Sharing
+- **Profile Manager**: Create, save, edit, clone, and switch between separate mod configurations (e.g. *"1.21.4 Performance Pack"*, *"1.20.1 RPG Survival"*).
+- **Direct Share Links**: Share direct web links (`https://mcmods.sednium.com/?profile=...`) that prompt visitors to auto-import and load the profile into their session with one click.
+- **JSON Manifests**: Download and import standard JSON modpack manifests.
+- **Multi-Format Mod Lists**: 1-click copy formatted mod lists for **Discord code blocks**, **Markdown tables**, or **Plain Text**.
 
-## 🛠️ Installation & Setup
+### 4. 🎛️ Per-Mod Release & Version Picker
+- Browse all available releases for any individual mod.
+- Filter and switch between **Release** (stable), **Beta**, and **Alpha** builds with release notes, file sizes, and release dates.
+
+### 5. 📁 Live Folder Synchronization
+- Connects directly to `.minecraft/mods` using the browser's **File System Access API**.
+- Download and write updated `.jar` files straight into your game folder with automated cleanup of outdated files.
+
+---
+
+## ⚡ How It Works
+
+<div align="center">
+
+```mermaid
+graph LR
+    A[📂 Drop .jar Files or Mods Folder] --> B[⚡ Web Crypto SHA-1 Hashing]
+    B --> C[🌐 Modrinth & CurseForge API]
+    C --> D[🧩 2-Phase Dependency Engine]
+    D --> E[🎛️ Review, Filter & Version Select]
+    E --> F[📥 Batch ZIP Download or Live Folder Sync]
+```
+
+</div>
+
+<details>
+<summary><b>🕹️ Click to view the Interactive Status Matrix</b></summary>
+<br>
+
+| Badge / Status | Meaning | Action Taken |
+| :--- | :--- | :--- |
+| <kbd style="color:#1bd96a; font-weight:bold;">🟢 UPDATE AVAILABLE</kbd> | Newer compatible JAR found for your target loader & MC version | Ready for 1-click download or sync |
+| <kbd style="color:#60a5fa; font-weight:bold;">🔵 UP TO DATE</kbd> | You already have the latest compatible release installed | Kept as-is |
+| <kbd style="color:#f59e0b; font-weight:bold;">🟡 MISSING DEPENDENCY</kbd> | Required library (e.g. Fabric API) is missing from your pack | 1-Click "Add Dependency" |
+| <kbd style="color:#ef4444; font-weight:bold;">🔴 NOT FOUND</kbd> | Custom compiled build or mod not indexed on Modrinth | Search override enabled |
+| <kbd style="color:#a855f7; font-weight:bold;">🟣 PINNED</kbd> | User locked mod to prevent accidental updates | Preserved at current version |
+
+</details>
+
+---
+
+## 📦 Architecture & Data Flow
+
+```
+mc-mod-updater/
+├── App.tsx                    # Main App Controller & State Orchestration
+├── components/
+│   ├── ModCard.tsx            # Mod Card UI, Version Selector Popover & Overrides
+│   ├── ModFilterBar.tsx       # Search, Sort, Status Filters & Mod List Exporter
+│   ├── ProfileManagerModal.tsx# Profile Drawer, JSON Manifests & Share Dialog
+│   ├── DependencyGraphModal.tsx# Full Modpack Dependency Resolver Modal
+│   ├── FolderSyncModal.tsx    # Live File System Access API Connector
+│   ├── ChangelogModal.tsx     # Markdown Release Notes Viewer
+│   ├── LandingPage.tsx        # Zero-State Dropzone & Hero Overview
+│   └── ToastContainer.tsx     # Non-intrusive Toast Notification System
+├── hooks/
+│   ├── useMods.ts             # 2-Phase Hash & Dependency Pipeline
+│   ├── useModSettings.ts      # Settings, Filters & Live Version Sync
+│   ├── useProfiles.ts         # Persistent Modpack Profiles Hook
+│   └── useFolderSync.ts       # Chromium File System Sync Interface
+├── services/
+│   ├── modrinth.ts            # Modrinth REST API v2 Client
+│   └── curseforge.ts          # CurseForge Core API Client
+├── utils/
+│   ├── fileHelpers.ts         # SHA-1, Manifest Builder & Base64 Share Encoder
+│   └── storage.ts             # Safe LocalStorage Layer
+└── public/
+    ├── llms.txt               # LLM Search Engine Documentation Standard
+    ├── ai.txt                 # Machine-Readable AI Crawler Directives
+    └── manifest.json          # PWA / Mobile Web App Manifest
+```
+
+---
+
+## 🛠️ Local Development & Setup
 
 ### Prerequisites
--   **Node.js** (v18 or higher)
--   **npm** (comes with Node.js)
+- [Node.js](https://nodejs.org/) (v18.0.0 or higher)
+- [npm](https://www.npmjs.com/) or [pnpm](https://pnpm.io/)
 
-### Quick Start
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/yourusername/mc-mod-updater.git
-    cd mc-mod-updater
-    ```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/CoderBhoid/Minecraft-Mods-Updater.git
+cd Minecraft-Mods-Updater
+```
 
-2.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-3.  **Run the development server**:
-    ```bash
-    npm run dev
-    ```
+### 3. Start Development Server
+```bash
+npm run dev
+```
+Open **`http://localhost:3000`** in your browser.
 
-4.  **Open the app**:
-    Launch your browser and go to `http://localhost:3000`.
+### 4. Build for Production
+```bash
+npm run build
+```
+Generates a complete static distribution in `./dist` ready to deploy on Vercel, Netlify, or GitHub Pages.
 
-## 📖 How It Works
+---
 
-1.  **Select Your Environment**: Choose your Minecraft version (e.g., 1.20.1) and Mod Loader (Fabric, Forge, etc.).
-2.  **Import Mods**: Drag and drop your `.jar` files onto the central drop zone.
-3.  **Scan**: The app calculates SHA-1 hashes of your files and queries the Modrinth API.
-4.  **Review**:
-    -   **Green**: Update available!
-    -   **Red**: Mod not found or no compatible version.
-    -   **Yellow**: Missing dependency detected.
-5.  **Download**: Click "Download ZIP" to get the latest versions of all compatible mods.
+## 🌐 Supported Environments & Loaders
 
-## 📦 Technology Stack
+<div align="center">
 
--   **Frontend Framework**: [React](https://react.dev/) (v19)
--   **Build Tool**: [Vite](https://vitejs.dev/)
--   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
--   **Animations**: [Framer Motion](https://www.framer.com/motion/)
--   **API Integration**: [Modrinth API v2](https://docs.modrinth.com/)
--   **Utilities**: `jszip`, `file-saver` for file management.
+| Mod Loader | Status | Compatibility Notes |
+| :---: | :---: | :--- |
+| **Fabric** | ✅ Supported | Full dependency & companion library resolution |
+| **NeoForge** | ✅ Supported | Full support for modern 1.20.4+ and 26.x releases |
+| **Forge** | ✅ Supported | Legacy & modern Forge support with version fallbacks |
+| **Quilt** | ✅ Supported | Quilt Standard Libraries (QSL) & Fabric compatibility |
+
+</div>
+
+---
+
+## 🤖 AI & LLM Search Standards
+
+This repository conforms to modern AI search and discoverability standards:
+- 📄 [`/llms.txt`](https://mcmods.sednium.com/llms.txt): High-signal contextual documentation for LLM search engines (Perplexity, ChatGPT, Claude, Gemini).
+- 📜 [`/llms-full.txt`](https://mcmods.sednium.com/llms-full.txt): Comprehensive API & schema reference.
+- ⚡ [`/ai.txt`](https://mcmods.sednium.com/ai.txt): Machine-readable indexing and citation permissions.
+
+---
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you'd like to improve the project:
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**!
 
-1.  Fork the repository.
-2.  Create a feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feat/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: add some amazing feature'`)
+4. Push to the Branch (`git push origin feat/AmazingFeature`)
+5. Open a Pull Request
+
+---
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
 
 ---
 
 <div align="center">
-  <p>Built with ❤️ by <b>Bhoid</b> for the Minecraft community.</p>
-  <p>Powered by <b>Sednium</b></p>
+  <p>Built with ❤️ by <b><a href="https://github.com/CoderBhoid">Bhoid</a></b> for the Minecraft community.</p>
+  <p>Powered by <b><a href="https://sednium.com">Sednium</a></b></p>
   <br />
-  <p style="font-size: 0.8rem; color: #666;">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG.</p>
+  <p style="font-size: 0.75rem; color: #71717a;">
+    <b>Disclaimer:</b> NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
+  </p>
 </div>
