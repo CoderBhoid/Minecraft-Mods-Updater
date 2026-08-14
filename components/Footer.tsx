@@ -26,8 +26,30 @@ export const Footer: React.FC<FooterProps> = ({ showInfo }) => {
             </div>
           </div>
         )}
-        <div className="text-center text-xs text-zinc-700">
-          Made By <span className="text-[#1bd96a] font-medium [text-shadow:_0_0_10px_rgb(27_217_106_/_40%)]">Sednium</span> and Maintained with love by <a href="https://github.com/CoderBhoid" target="_blank" rel="noopener noreferrer" className="text-[#1bd96a] font-medium transition-all [text-shadow:_0_0_10px_rgb(27_217_106_/_40%)] hover:[text-shadow:_0_0_20px_rgb(27_217_106_/_80%)] hover:text-[#1bd96a]">Bhoid</a>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-600">
+          <div className="flex items-center gap-2">
+            <span>Part of the</span>
+            <a
+              href="https://sednium.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#1bd96a] font-medium transition-all [text-shadow:_0_0_10px_rgb(27_217_106_/_40%)] hover:[text-shadow:_0_0_20px_rgb(27_217_106_/_80%)] hover:text-[#1bd96a]"
+            >
+              Sednium
+            </a>
+            <span>ecosystem</span>
+          </div>
+          <div>
+            Crafted with passion & maintained by{" "}
+            <a
+              href="https://github.com/CoderBhoid"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 hover:text-[#1bd96a] transition-colors"
+            >
+              Bhoid
+            </a>
+          </div>
         </div>
       </div>
     </div>

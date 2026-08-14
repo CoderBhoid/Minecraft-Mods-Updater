@@ -1,5 +1,6 @@
 // Fallback lists in case API fails
 export const MC_RELEASES = [
+  '26.2', '26.1.2', '26.1.1', '26.1', '26.0',
   '1.21.4', '1.21.3', '1.21.2', '1.21.1', '1.21',
   '1.20.6', '1.20.5', '1.20.4', '1.20.3', '1.20.2', '1.20.1', '1.20',
   '1.19.4', '1.19.3', '1.19.2', '1.19.1', '1.19',
@@ -18,10 +19,10 @@ export const MC_RELEASES = [
 ];
 
 export const MC_SNAPSHOTS = [
+  '26.3-snapshot-8', '26.3-snapshot-7', '26.3-snapshot-6', '26.3-snapshot-5', '26.3-snapshot-4',
   '24w14a', '24w13a', '24w12a', '24w11a', '24w10a',
   '24w09a', '24w07a', '24w06a', '24w05a', '24w04a',
-  '23w51b', '23w51a', '23w46a', '23w45a', '23w44a',
-  '23w43b', '23w43a', '23w42a', '23w41a', '23w40a'
+  '23w51b', '23w51a', '23w46a', '23w45a', '23w44a'
 ];
 
 export const LOADERS = [

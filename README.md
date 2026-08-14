@@ -4,7 +4,7 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=flat&logo=vite&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)
-[![Live Demo](https://img.shields.io/badge/demo-live-green.svg)](https://mods-updater-minecraft.vercel.app)
+[![Live Demo](https://img.shields.io/badge/demo-live-green.svg)](https://mcmods.sednium.com)
 
 **MC Mod Updater** is the ultimate tool for Minecraft players who want to keep their modpack up-to-date without the hassle. It simplifies the process of managing mods by automatically detecting outdated files, resolving missing dependencies, and fetching the latest versions directly from Modrinth.
 
